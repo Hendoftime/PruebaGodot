@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4h7ij0l8c8wk"]
+
+[ext_resource type="PackedScene" uid="uid://chrslegusb5xe" path="res://pj.tscn" id="1_51put"]
+[ext_resource type="Texture2D" uid="uid://dl13avg0httvh" path="res://pixel skies/1.jpg" id="1_umet5"]
+[ext_resource type="Texture2D" uid="uid://b80p6qgjo52g3" path="res://Desert Tile/SpriteSheet.png" id="3_fcs0j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v18go"]
+texture = ExtResource("3_fcs0j")
+texture_region_size = Vector2i(20, 20)
+0:3/0 = 0
+1:3/0 = 0
+0:2/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+3:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+6:3/0 = 0
+6:2/0 = 0
+6:1/0 = 0
+6:0/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+5:2/0 = 0
+5:3/0 = 0
+4:2/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+3:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_a0jet"]
+sources/3 = SubResource("TileSetAtlasSource_v18go")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="1" type="Sprite2D" parent="."]
+position = Vector2(112, 89)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_umet5")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_51put")]
+position = Vector2(112, 89)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(4, 4)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_a0jet")
+format = 2
