@@ -54,7 +54,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_umet5")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_51put")]
-position = Vector2(112, 89)
+position = Vector2(170, 92)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(4, 4)
