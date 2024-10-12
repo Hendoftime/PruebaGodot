@@ -1,68 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4h7ij0l8c8wk"]
+[gd_scene load_steps=3 format=3 uid="uid://d4h7ij0l8c8wk"]
 
-[ext_resource type="PackedScene" uid="uid://chrslegusb5xe" path="res://pj.tscn" id="1_51put"]
-[ext_resource type="Texture2D" uid="uid://dl13avg0httvh" path="res://pixel skies/1.jpg" id="1_umet5"]
-[ext_resource type="Texture2D" uid="uid://b80p6qgjo52g3" path="res://Desert Tile/SpriteSheet.png" id="3_fcs0j"]
+[ext_resource type="Script" path="res://principal.gd" id="1_wcjgk"]
+[ext_resource type="PackedScene" uid="uid://byjuc2t2rtviu" path="res://lvl1_black.tscn" id="2_hgm2m"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v18go"]
-texture = ExtResource("3_fcs0j")
-texture_region_size = Vector2i(20, 20)
-0:3/0 = 0
-1:3/0 = 0
-0:2/0 = 0
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.875, -7.53125, -7.125, -9.78125, -7.0625, -9.84375, -7.0625, -9.84375, 10.0625, -10.0312, 9.9375, 9.96875, -10.0625, 9.90625)
-0:1/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-3:4/0 = 0
-2:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-6:3/0 = 0
-6:2/0 = 0
-6:1/0 = 0
-6:0/0 = 0
-5:0/0 = 0
-5:1/0 = 0
-5:2/0 = 0
-5:3/0 = 0
-4:2/0 = 0
-3:1/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-4:1/0 = 0
-3:2/0 = 0
-2:2/0 = 0
-1:2/0 = 0
-1:1/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-2:1/0 = 0
+[node name="Game" type="Node"]
+script = ExtResource("1_wcjgk")
 
-[sub_resource type="TileSet" id="TileSet_a0jet"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
-sources/3 = SubResource("TileSetAtlasSource_v18go")
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 1028.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Node2D" type="Node2D"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
 
-[node name="1" type="Sprite2D" parent="."]
-position = Vector2(112, 89)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_umet5")
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 4
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_51put")]
-position = Vector2(170, 92)
+[node name="level" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_hgm2m")]
+position = Vector2(661.185, 282.771)
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(4, 4)
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="HBoxContainer/SubViewportContainer/SubViewport/level/CharacterBody2D2" index="2"]
+remote_path = NodePath("../../../../../SubViewportContainer2/SubViewport/Camera2D")
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_a0jet")
-format = 2
-layer_0/tile_data = PackedInt32Array(458762, 3, 0, 458763, 3, 0, 458764, 3, 0, 458765, 3, 0, 458766, 3, 0, 458767, 3, 0, 458761, 3, 0, 458760, 3, 0, 458759, 3, 0)
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+position = Vector2(661.185, 282.771)
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
+position = Vector2(965.185, 331.771)
+
+[editable path="HBoxContainer/SubViewportContainer/SubViewport/level"]
